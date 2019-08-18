@@ -1,0 +1,77 @@
+       <!-- Begin Page Content -->
+       <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+        <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more
+          information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official
+            DataTables documentation</a>.</p>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+          </div>
+          <!-- '','','','','asset_type','','','total_maint_amt','last_service_date','next_service_date','last_bill_amount','','date_sold' -->
+
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                      <th>
+                          <label class="au-checkbox">
+                            <input type="checkbox">
+                            <span class="au-checkmark"></span>
+                          </label>
+                        </th>
+                    <th>Group Code</th>
+                    <th>Group Name</th>
+                    <th class="" scope="col">Action</th>
+                   </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let product of allGroups; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{product?.code}}</td>
+                    <td>{{product?.detail}}</td>
+                    <td>
+                        <div class="table-data-feature">
+                          <a routerLink="../admindetails/{{product?._id}}" routerLinkActive="active"
+                            (click)="setLocalForAdmin()">
+                            <button class="btn btn-sm btn-info mr-3" data-toggle="tooltip" data-placement="top" title="All Assets"><i class="fa fa-eye"> </i></button></a>
+
+                          <!-- <a routerLink="../admineditproducts/{{product?._id}}" routerLinkActive="active"> -->
+                          <button class="btn btn-sm btn-success mr-3" data-toggle="tooltip" data-placement="top" title="Add An Asset To This Category"
+                            (click)="addId(product)">
+                            <i class="fa fa-user-plus"></i></button>
+
+
+                          <button class="btn btn-sm btn-danger mr-3" (click)="deleteAProduct(product, product._id, i)"><i
+                              class="fa fa-times"></i></button>
+
+                          <!-- </a>                       -->
+                          <span data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+                            <label class="switch switch-3d switch-primary mr-3">
+                              <input type="checkbox" class="switch-input" [checked]="product.status"
+                                (click)="toggleAdminProduct(product)">
+                              <span class="switch-label"></span>
+                              <span class="switch-handle"></span>
+                            </label>
+                          </span>
+
+                        </div>
+                      </td>
+                    <!-- <td>{{product?.refnum}}</td>
+                    <td>{{product?.date_acquired}}</td>
+                    <td>{{product?.original_cost}}</td>
+                    <td>{{product?.equip_status}}</td> -->
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- /.container-fluid -->
