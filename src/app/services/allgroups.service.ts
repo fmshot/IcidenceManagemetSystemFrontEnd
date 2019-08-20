@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 
 
-import {Allgroup} from "../models/allgroup";
+import {Allgroup} from './models/allgroup';
 import { from } from 'rxjs';
 
 @Injectable({
