@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from "@angular/forms";
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 
@@ -12,6 +13,8 @@ import { TopnavbarComponent } from './components/topnavbar/topnavbar.component';
 import { AssettableComponent } from './components/assettable/assettable.component';
 import { HttpClient } from 'selenium-webdriver/http';
 import { AllgroupComponent } from './components/allgroup/allgroup.component';
+import { AllocationComponent } from './components/allocation/allocation.component';
+import { CreateassetComponent } from './components/createasset/createasset.component';
 
 @NgModule({
   declarations: [
@@ -22,10 +25,13 @@ import { AllgroupComponent } from './components/allgroup/allgroup.component';
     FooterComponent,
     TopnavbarComponent,
     AssettableComponent,
-    AllgroupComponent
+    AllgroupComponent,
+    AllocationComponent,
+    CreateassetComponent
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule
 

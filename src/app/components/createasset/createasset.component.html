@@ -1,0 +1,100 @@
+<div class="">
+  <div class="row container">
+    <!-- <div class="container col-lg-6 card mt-5">
+      <div class="card-body">
+        <form [formGroup]="allocationViewFormGroup">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Choose A Category</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+          <select class="custom-select">
+            <option selected>Choose A Category</option>
+            <option value="1"><a href="#" class="card-link">Categories</a></option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <a href="#" class="card-link">Add New Category</a>
+        <a href="#" class="card-link">Another link</a>
+      </div>
+    </div> -->
+
+    <div class=" container col-lg-6 card mt-5">
+      <div class="card-body">
+        <h5 class="text-center">Add A New Asset</h5>
+        <div class="">
+            <select class="custom-select">
+              <option *ngFor="let product of allAssets" ; [value]="product.Value">{{product?.asset_desc}}</option>
+              <!-- <option value="1"><a href="#" class="card-link"></a></option> -->
+              <!-- <option value="2">Two</option>
+              <option value="3">Three</option> -->
+            </select>
+            <a href="#" class="card-link float-right">Add New Category</a>
+          </div>
+        <form [formGroup]="makeIdFormGroup" (ngSubmit)="makeNewId()">
+
+          <div class="form-group">
+            <label for="formGroupExampleInput">Example label</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Another label</label>
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">date_acquired</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" formControlName="date_acquired"
+              aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">original_cost</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" formControlName="original_cost"
+              placeholder="Password">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputPassword1">equip_status</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" formControlName="equip_status"
+              placeholder="Password">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">refnum</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" formControlName="refnum"
+              placeholder="Password">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">equip_status</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" formControlName="equip_status"
+              placeholder="Password">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">equip_status</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" formControlName="equip_status"
+              placeholder="Password">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">equip_status</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" formControlName="equip_status"
+              placeholder="Password">
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+      </div>
+    </div>
+
+  </div>
+</div>

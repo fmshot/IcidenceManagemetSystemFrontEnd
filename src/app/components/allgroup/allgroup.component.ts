@@ -48,4 +48,10 @@ export class AllgroupComponent implements OnInit {
     )
 
   }
+
+
+  public showAnAsset() {
+    $('#mediumModal').modal('show');
+  }
+
 }
