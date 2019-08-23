@@ -8,6 +8,12 @@ declare const $ : any;
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+public allgroup:boolean=true;
+public assettable:boolean=false;
+public allocation:boolean=false;
+// public assettable:boolean=true;
+
+
 
   constructor() { }
 
@@ -16,7 +22,19 @@ export class HomeComponent implements OnInit {
 
 
 
+public showAssetTable(){
+  this.assettable=true;
+  this.allgroup=false;
+  this.allocation=false;
+
+}
+
+public showAllocationTable(){
+  this.assettable=false;
+  this.allgroup=false;
+  this.allocation=true;
+
+}
 
 
-  
 }

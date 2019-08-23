@@ -18,6 +18,9 @@ export class SidebarComponent implements OnInit {
 
     };
   };
+  public allgroup:boolean=true;
+  public assettable:boolean=false;
+  public allocation:boolean=false;
 
   constructor(private http:HttpClient, private fb: FormBuilder) {
     this.allocationViewFormGroup = this.fb.group(SidebarComponent.allocationViewForm());
@@ -25,10 +28,24 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
 
 
+  // public showAssetTable(){
+  //   this.assettable=true;
+  //   this.allgroup=false;
+  //   this.allocation=false;
+
+  // }
+
+  // public showAllocationTable(){
+  //   this.assettable=false;
+  //   this.allgroup=false;
+  //   this.allocation=true;
+
+  // }
 
 
   // public categoryModal() {

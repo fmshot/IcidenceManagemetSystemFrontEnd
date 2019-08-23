@@ -1,17 +1,82 @@
        <!-- Begin Page Content -->
        <div class="container-fluid">
+<!-- <div class="row">
+         <div class=" col-lg-6 card shadow mb-4">
+           <div class="card-header py-3">
+             <h6 class="m-0 font-weight-bold text-primary">CREATE ASSET</h6>
+           </div>
 
-         <!-- Page Heading -->
-         <!-- <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-         <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more
-           information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official
-             DataTables documentation</a>.</p> -->
+           <div class="card-body">
+              <p>Choose The Asset Category</p>
+             <form class="form-inline" [formGroup]="allGroupFormGroup">
+               <div class="form-group mx-sm-3 mb-2">
+                 <select>
+                   <option *ngFor='let asset of allGroups'>{{asset?.detail}}</option>
+                 </select>
+               </div>
+               <span class=""><a data-toggle="modal" data-target="#exampleModal">Create New Category</a></span>
+             </form>
+           </div>
+         </div>
+         <div class="col-lg-6">
+            <form [formGroup]='createAssetFormGroup'>
+                <div class="row py-3">
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="Enter Asset Code">
+                  </div>
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="Enter Asset Description">
+                  </div>
+                </div>
 
+                <div class="row py-3">
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Enter Asset Type">
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Date Acquired">
+                    </div>
+                  </div>
+
+                  <div class="row py-3">
+                      <div class="col">
+                        <input type="text" class="form-control" placeholder="Original Cost">
+                      </div>
+                      <div class="col">
+                        <input type="text" class="form-control" placeholder="Total Maintainance Amount">
+                      </div>
+                    </div>
+
+                    <div class="row py-3">
+                        <div class="col">
+                          <input type="text" class="form-control" placeholder="Last Service Date">
+                        </div>
+                        <div class="col">
+                          <input type="text" class="form-control" placeholder="Last name">
+                        </div>
+                      </div>
+
+                      <div class="row py-3">
+                          <div class="col">
+                            <input type="text" class="form-control" placeholder="First name">
+                          </div>
+                          <div class="col">
+                            <input type="text" class="form-control" placeholder="Last name">
+                          </div>
+                        </div>
+              </form>
+         </div>
+
+            </div> -->
          <!-- DataTales Example -->
          <div class="card shadow mb-4">
            <div class="card-header py-3">
              <h6 class="m-0 font-weight-bold text-primary">ASSETS TABLE</h6>
            </div>
+           <div class="card-header py-3"  data-toggle="modal"
+           data-target="#exampleModal">
+              <h6 class="m-0 font-weight-bold text-primary">CREATE ASSET</h6>
+            </div>
            <!-- '','','','','asset_type','','','total_maint_amt','last_service_date','next_service_date','last_bill_amount','','date_sold' -->
 
            <div class="card-body">
@@ -19,12 +84,12 @@
                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                  <thead>
                    <tr>
-                      <th>
-                          <label class="au-checkbox">
-                            <input type="checkbox">
-                            <span class="au-checkmark"></span>
-                          </label>
-                        </th>
+                     <th>
+                       <label class="au-checkbox">
+                         <input type="checkbox">
+                         <span class="au-checkmark"></span>
+                       </label>
+                     </th>
                      <th>asset_code</th>
                      <th>asset_desc</th>
                      <th>refnum</th>
@@ -54,32 +119,32 @@
                      <td>{{product?.original_cost}}</td>
                      <td>{{product?.equip_status}}</td>
                      <td>
-                        <div class="table-data-feature">
-                          <a routerLink="../admindetails/{{product?._id}}" routerLinkActive="active"
-                            (click)="setLocalForAdmin()">
-                            <button class="btn btn-sm btn-info mr-3" data-toggle="tooltip" data-placement="top" title=""
-                              data-original-title="Send"><i class="fa fa-eye"> </i></button></a>
+                       <div class="table-data-feature">
+                         <a routerLink="../admindetails/{{product?._id}}" routerLinkActive="active"
+                           (click)="setLocalForAdmin()">
+                           <button class="btn btn-sm btn-info mr-3" data-toggle="tooltip" data-placement="top" title=""
+                             data-original-title="Send"><i class="fa fa-eye"> </i></button></a>
 
-                          <!-- <a routerLink="../admineditproducts/{{product?._id}}" routerLinkActive="active"> -->
-                          <button class="btn btn-sm btn-success mr-3" data-toggle="modal" data-target="#exampleModaleditProduct"
-                            (click)="addId(product)" data-placement="top" title="" data-original-title="Send"><i
-                              class="fa fa-edit"></i></button>
+                         <!-- <a routerLink="../admineditproducts/{{product?._id}}" routerLinkActive="active"> -->
+                         <button class="btn btn-sm btn-success mr-3" data-toggle="modal"
+                           data-target="#exampleModaleditProduct" (click)="addId(product)" data-placement="top" title=""
+                           data-original-title="Send"><i class="fa fa-edit"></i></button>
 
-                          <button class="btn btn-sm btn-danger mr-3" (click)="deleteAProduct(product, product._id, i)"><i
-                              class="fa fa-times"></i></button>
+                         <button class="btn btn-sm btn-danger mr-3" (click)="deleteAProduct(product, product._id, i)"><i
+                             class="fa fa-times"></i></button>
 
-                          <!-- </a>                       -->
-                          <span data-toggle="tooltip" data-placement="top" title="Tooltip on top">
-                            <label class="switch switch-3d switch-primary mr-3">
-                              <input type="checkbox" class="switch-input" [checked]="product.status"
-                                (click)="toggleAdminProduct(product)">
-                              <span class="switch-label"></span>
-                              <span class="switch-handle"></span>
-                            </label>
-                          </span>
+                         <!-- </a>                       -->
+                         <span data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+                           <label class="switch switch-3d switch-primary mr-3">
+                             <input type="checkbox" class="switch-input" [checked]="product.status"
+                               (click)="toggleAdminProduct(product)">
+                             <span class="switch-label"></span>
+                             <span class="switch-handle"></span>
+                           </label>
+                         </span>
 
-                        </div>
-                      </td>
+                       </div>
+                     </td>
                    </tr>
                  </tbody>
                </table>
@@ -89,3 +154,79 @@
 
        </div>
        <!-- /.container-fluid -->
+
+
+       <!-- Modal -->
+       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <form [formGroup]='createAssetFormGroup'>
+             <div class="modal-body">
+                    <div class="row py-3">
+                      <div class="col">
+                        <input type="text" class="form-control" formControlName='asset_code' placeholder="Enter Asset Code">
+                      </div>
+                      <div class="col">
+                        <input type="text" class="form-control" formControlName='asset_desc' placeholder="Enter Asset Description">
+                      </div>
+                    </div>
+
+                    <div class="row py-3">
+                        <div class="col">
+                          <input type="text" class="form-control" formControlName='asset_type' placeholder="Enter Asset Type">
+                        </div>
+                        <div class="col">
+                          <input type="text" class="form-control" formControlName='date_acquired' placeholder="Date Acquired">
+                        </div>
+                      </div>
+                      <div class="row py-3">
+                          <div class="col">
+                            <input type="text" class="form-control" formControlName='refnum' placeholder="Enter Reference Number">
+                          </div>
+                          <div class="col">
+                            <input type="text" class="form-control" formControlName='next_service_date' placeholder="Next Sevice Date">
+                          </div>
+                        </div>
+                      <div class="row py-3">
+                          <div class="col">
+                            <input type="text" class="form-control" formControlName='original_cost' placeholder="Original Cost">
+                          </div>
+                          <div class="col">
+                            <input type="text" class="form-control" formControlName='total_maint_amt' placeholder="Total Maintainance Amount">
+                          </div>
+                        </div>
+
+                        <div class="row py-3">
+                            <div class="col">
+                              <input type="text" class="form-control" formControlName='last_service_date' placeholder="Last Service Date">
+                            </div>
+                            <div class="col">
+                              <input type="text" class="form-control" formControlName='last_bill_amount' placeholder="last_bill_amount ">
+                            </div>
+                          </div>
+                          <div class="row py-3">
+                              <div class="col">
+                                <input type="text" class="form-control" formControlName='equip_status' placeholder="Equip Status">
+                              </div>
+                              <div class="col">
+                                <input type="text" class="form-control" formControlName='date_sold' placeholder="Date Sold ">
+                              </div>
+                            </div>
+
+
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               <button type="submit" (click)="saveNewAsset()" class="btn btn-primary">Save changes</button>
+             </div>
+          </div>
+        </form>
+           </div>
+         </div>
+       </div>

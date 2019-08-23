@@ -1,5 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
+import {
+  FormGroup,
+  FormBuilder,
+  FormControl,
+  NgForm,
+  Validators
+} from "@angular/forms";
+
+
+import { AllocationService } from "../../services/allocation.service";
 
 import { AllgroupsService } from "../../services/allgroups.service";
 declare const $: any;
@@ -9,12 +19,28 @@ declare const $: any;
   styleUrls: ['./allgroup.component.css']
 })
 export class AllgroupComponent implements OnInit {
+  public load = {
+    requesting: false
+  };
   allGroups: any = [];
+  public allCategories: any=[];
+  private allAllocations:any=[];
+  public allGroupFormGroup: FormGroup;
 
-  constructor(
+  static allGroupForm = () => {
+    return {
+      code: new FormControl(""),
+      detail: new FormControl("")
+
+    };
+  };
+  constructor(private allocationService:AllocationService, private fb: FormBuilder,
     private allgroupsService: AllgroupsService,
     private http: HttpClient
-  ) {}
+  ) {
+    this.allGroupFormGroup = this.fb.group(AllgroupComponent.allGroupForm());
+
+  }
 
   ngOnInit() {
     this.getAssets();
@@ -25,10 +51,10 @@ export class AllgroupComponent implements OnInit {
 
   //for complete table on init
   public getAssets() {
-    this.allgroupsService.getAllasset().subscribe(
+    this.allgroupsService.getAllGroups().subscribe(
       (response: any) => {
         this.allGroups = response.data;
-        console.log("respone gfhgfhfghhg ", this.allGroups);
+        console.log("response for all groups ", this.allGroups);
       },
       error => {
         console.log("Error ", error);
@@ -38,7 +64,7 @@ export class AllgroupComponent implements OnInit {
   //for complete table on init
 
   public seeCategoryAssets(){
-    this.allgroupsService.getAllasset().subscribe(
+    this.allgroupsService.getAllGroups().subscribe(
       (response:any)=>{
 
       },
@@ -49,6 +75,38 @@ export class AllgroupComponent implements OnInit {
 
   }
 
+
+  public postAssetCategory() {
+    this.load.requesting = true;
+    const categoryToSubmit = this.allGroupFormGroup.value;
+    this.allgroupsService.postAllassetGroups(categoryToSubmit).subscribe(
+      (res: any) => {
+        this.load.requesting = false;
+        this.allCategories.push(res);
+        this.allGroupFormGroup.reset();
+        // console.log("response for all groups ", this.allGroups);
+      },
+      error => {
+        console.log("Error ", error);
+        this.load.requesting = false;
+
+      }
+    );
+  }
+
+  // onSubmitproductsForm() {
+  //   this.adminproductService.postAdminproduct(productObjectToSubmit).subscribe(
+  //     (res) => {
+  //       this.productsForm.reset();
+
+  //     },
+  //     (error) => {
+
+  //     },
+  //     () => {
+
+  //     });
+  // }
 
   public showAnAsset() {
     $('#mediumModal').modal('show');

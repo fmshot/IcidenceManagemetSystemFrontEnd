@@ -12,7 +12,7 @@ import { from } from 'rxjs';
 export class AllassetsService {
   selectedAllasset: Allasset;
   allassets: Allasset[];
-  readonly baseURL = 'http://localhost:8000/api/assetsdetail';
+  readonly baseURL = 'http://localhost/icm/public/api/assetsdetail';
 
   constructor(private http: HttpClient) { }
 
@@ -20,5 +20,9 @@ export class AllassetsService {
 
   getAllasset() {
     return this.http.get(this.baseURL);
+  }
+
+  postNewasset(asset: Allasset) {
+    return this.http.post(this.baseURL, asset);
   }
 }

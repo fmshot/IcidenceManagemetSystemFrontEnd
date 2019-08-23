@@ -1,5 +1,24 @@
        <!-- Begin Page Content -->
        <div class="container-fluid">
+          <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">CREATE AALLOCATION</h6>
+              </div>
+
+              <div class="card-body">
+                  <form class="form-inline" [formGroup]="allGroupFormGroup">
+                      <div class="form-group mx-sm-3 mb-2">
+                        <label for="inputPassword2" class="sr-only">Password</label>
+                        <input type="text" class="form-control" formControlName="code" id="inputPassword2" placeholder="Enter Category Name">
+                      </div>
+                      <div class="form-group mx-sm-3 mb-2">
+                          <label for="inputPassword2" class="sr-only">ID</label>
+                          <input type="text" class="form-control" formControlName="detail" id="inputPassword2" placeholder="Enter Category ID">
+                        </div>
+                      <button (click)="postAssetCategory()" class="btn btn-primary mb-2">Create New Category</button>
+                    </form>
+              </div>
+            </div>
 
           <!-- Page Heading -->
           <!-- <h1 class="h3 mb-2 text-gray-800">Tables</h1>

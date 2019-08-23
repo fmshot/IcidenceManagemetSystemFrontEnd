@@ -29,17 +29,35 @@
 
   <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item">
-    <a class="nav-link collapsed" data-toggle="collapse"
-      data-target="#collapseOne" aria-expanded="true" aria-controls="collapseTwo">
+    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapsezero" aria-expanded="true"
+      aria-controls="collapseTwo">
       <i class="fas fa-fw fa-cog"></i>
-      <span>All Assets</span>
+      <span style="cursor:pointer">Categories</span>
+    </a>
+    <div id="collapsezero" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Custom Components:</h6>
+        <a class="collapse-item" style="cursor:pointer" routerLink='allassetgroups' routerLinkActive='active'>All Categories</a>
+        <a class="collapse-item" style="cursor:pointer" routerLink='allassetgroups' routerLinkActive='active'>Create Category</a>
+        <a class="collapse-item" style="cursor:pointer" routerLink='allassetgroups' routerLinkActive='active'>View Single Asset</a>
+
+      </div>
+    </div>
+  </li>
+
+  <!-- Nav Item - Pages Collapse Menu -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+      aria-controls="collapseTwo">
+      <i class="fas fa-fw fa-cog"></i>
+      <span style="cursor:pointer">All Assets</span>
     </a>
     <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Custom Components:</h6>
-        <a class="collapse-item">Assets</a>
-        <a class="collapse-item" data-toggle="modal" data-target="#categoryModal">Create Asset</a>
-        <a class="collapse-item" routerLink='/allassetgroups' routerLinkActive='active'>View Single Asset</a>
+        <a class="collapse-item" style="cursor:pointer" routerLink='../allassets' routerLinkActive='active'> All Assets</a>
+        <a class="collapse-item" style="cursor:pointer" routerLink='../allassets'routerLinkActive='active'>Create Asset</a>
+        <a class="collapse-item" style="cursor:pointer" routerLink='../allassets'routerLinkActive='active'>View Single Asset</a>
 
       </div>
     </div>
@@ -47,22 +65,31 @@
 
 
   <li class="nav-item">
-    <a class="nav-link collapsed" routerLink='/allAssets' routerLinkActive='active' data-toggle="collapse"
+    <a class="nav-link collapsed" (click)='showAllocationTable()' data-toggle="collapse"
       data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
       <i class="fas fa-fw fa-cog"></i>
-      <span>Allocations</span>
+      <span style="cursor:pointer" >Allocations</span>
     </a>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Custom Components:</h6>
+        <a class="collapse-item" style="cursor:pointer" >All Allocations</a>
+        <a class="collapse-item" style="cursor:pointer" routerLink='allassetgroups' routerLinkActive='active' (click)='showAllocationTable()'>Create Allocation</a>
+        <a class="collapse-item" style="cursor:pointer" routerLink='allassetgroups' routerLinkActive='active' (click)='showAllocationTable()'>View Single Asset</a>
+
+      </div>
+    </div>
+    <!-- <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Custom Components:</h6>
         <a class="collapse-item" href="buttons.html">Buttons</a>
         <a class="collapse-item" routerLink='/allassetgroups' routerLinkActive='active'>Create Asset</a>
       </div>
-    </div>
+    </div> -->
   </li>
 
 
-  <li class="nav-item">
+  <!-- <li class="nav-item">
     <a class="nav-link collapsed" routerLink='/allAssets' routerLinkActive='active' data-toggle="collapse"
       data-target="#collapseThree" aria-expanded="true" aria-controls="collapseTwo">
       <i class="fas fa-fw fa-cog"></i>
@@ -71,37 +98,64 @@
     <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Custom Components:</h6>
+        <a class="collapse-item">Assets</a>
+        <a class="collapse-item" data-toggle="modal" data-target="#categoryModal">Create Asset</a>
+        <a class="collapse-item" routerLink='/allassetgroups' routerLinkActive='active'>View Single Asset</a>
+
+      </div>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Custom Components:</h6>
         <a class="collapse-item" href="buttons.html">Buttons</a>
         <a class="collapse-item" routerLink='/allassetgroups' routerLinkActive='active'>Create Asset</a>
       </div>
     </div>
-  </li>
+  </li> -->
 
 
   <li class="nav-item">
-    <a class="nav-link collapsed" data-toggle="collapse"
-      data-target="#collapseFpur" aria-expanded="true" aria-controls="collapseTwo">
+    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true"
+      aria-controls="collapseTwo">
       <i class="fas fa-fw fa-cog"></i>
-      <span>Faults</span>
+      <span style="cursor:pointer" >Faults</span>
     </a>
-    <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar2">
+    <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Custom Components:</h6>
+        <a class="collapse-item" style="cursor:pointer">All Faults</a>
+        <a class="collapse-item" style="cursor:pointer">Create Asset</a>
+        <a class="collapse-item" style="cursor:pointer">View Single Asset</a>
+
+      </div>
+    </div>
+    <!-- <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar2">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Custom Components:</h6>
         <a class="collapse-item">Buttons</a>
         <a class="collapse-item">Create Asset</a>
       </div>
-    </div>
+    </div> -->
   </li>
 
 
   <!-- Nav Item - Utilities Collapse Menu -->
   <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true"
+    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true"
       aria-controls="collapseUtilities">
       <i class="fas fa-fw fa-wrench"></i>
-      <span>Engineers</span>
+      <span style="cursor:pointer">Engineers</span>
     </a>
-    <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar3">
+    <div id="collapseFive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Custom Components:</h6>
+        <a class="collapse-item" style="cursor:pointer">Assets</a>
+        <a class="collapse-item" style="cursor:pointer">Create Asset</a>
+        <a class="collapse-item"  style="cursor:pointer">View Single Asset</a>
+
+      </div>
+    </div>
+    <!-- <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar3">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Custom Utilities:</h6>
         <a class="collapse-item" href="utilities-color.html">Colors</a>
@@ -109,18 +163,27 @@
         <a class="collapse-item" href="utilities-animation.html">Animations</a>
         <a class="collapse-item" href="utilities-other.html">Other</a>
       </div>
-    </div>
+    </div> -->
   </li>
 
 
   <!-- Nav Item - Utilities Collapse Menu -->
   <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true"
+    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true"
       aria-controls="collapseUtilities">
       <i class="fas fa-fw fa-wrench"></i>
-      <span>Utilities</span>
+      <span style="cursor:pointer">Utilities</span>
     </a>
-    <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar4">
+    <div id="collapseSix" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Custom Components:</h6>
+        <a class="collapse-item" style="cursor:pointer">Assets</a>
+        <a class="collapse-item" style="cursor:pointer">Create Asset</a>
+        <a class="collapse-item" style="cursor:pointer">View Single Asset</a>
+
+      </div>
+    </div>
+    <!-- <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar4">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Custom Utilities:</h6>
         <a class="collapse-item" href="utilities-color.html">Colors</a>
@@ -128,7 +191,7 @@
         <a class="collapse-item" href="utilities-animation.html">Animations</a>
         <a class="collapse-item" href="utilities-other.html">Other</a>
       </div>
-    </div>
+    </div> -->
   </li>
 
   <!-- Divider -->
@@ -141,7 +204,7 @@
 
   <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
       aria-controls="collapsePages">
       <i class="fas fa-fw fa-folder"></i>
       <span>Pages</span>
@@ -229,52 +292,53 @@
 
   <!-- Modal For Getting Asset Categories -->
 
-       <!-- Button trigger modal -->
-       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#categoryModal">
-        Launch demo modal
-      </button>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#categoryModal">
+    Launch demo modal
+  </button>
 
-      <!-- Modal -->
-      <div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+  <!-- Modal -->
+  <div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="container shadow" [formGroup]="allocationViewFormGroup">
+            <div class="py-4" style="text-align:center">
+              <h5>PLEASE FILL IN CARD DETAILS</h5>
             </div>
-            <div class="modal-body">
-                <form class="container shadow" [formGroup]="allocationViewFormGroup">
-                    <div class="py-4" style="text-align:center">
-                      <h5>PLEASE FILL IN CARD DETAILS</h5>
-                    </div>
-          <div class="form-group">
-                      <label for="exampleInputEmail1">code</label>
-                      <input type="text" class="form-control" formControlName="code" id="validationDefault01"
-                        aria-describedby="emailHelp" placeholder="">
-                        <!-- <small style="color:red" *ngIf='!makeIdFormGroup.valid'>enter full name</small> -->
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">detail</label>
-                      <input type="number" class="form-control" formControlName="detail" id="exampleInputEmail1"
-                        aria-describedby="emailHelp" placeholder="">
-                        <!-- <small style="color:red" *ngIf='!makeIdFormGroup.valid'>Numbers only!</small> -->
-
-                    </div>
-
-                    <div class="pr-1">
-                      <button type="submit" [disabled]="!allocationViewFormGroup.valid" class="btn btn-primary">Submit</button>
-                    </div>
-                    <small *ngIf="!allocationViewFormGroup.valid">Please fill all details above to create your Id</small>
-                    <br>
-
-                  </form>
+            <div class="form-group">
+              <label for="exampleInputEmail1">code</label>
+              <input type="text" class="form-control" formControlName="code" id="validationDefault01"
+                aria-describedby="emailHelp" placeholder="">
+              <!-- <small style="color:red" *ngIf='!makeIdFormGroup.valid'>enter full name</small> -->
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+            <div class="form-group">
+              <label for="exampleInputEmail1">detail</label>
+              <input type="number" class="form-control" formControlName="detail" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="">
+              <!-- <small style="color:red" *ngIf='!makeIdFormGroup.valid'>Numbers only!</small> -->
+
             </div>
-          </div>
+
+            <div class="pr-1">
+              <button type="submit" [disabled]="!allocationViewFormGroup.valid" class="btn btn-primary">Submit</button>
+            </div>
+            <small *ngIf="!allocationViewFormGroup.valid">Please fill all details above to create your Id</small>
+            <br>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
+    </div>
+  </div>
