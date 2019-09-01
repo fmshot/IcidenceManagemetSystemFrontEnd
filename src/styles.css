@@ -3,3 +3,6 @@
 @import "assets/css/sb-admin-2.min.css";
 @import "assets/vendor/fontawesome-free/css/fontawesome.min.css";
 
+.btn:disabled {
+  cursor: not-allowed;
+}

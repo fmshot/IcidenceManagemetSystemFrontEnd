@@ -22,44 +22,48 @@ export class AssettableComponent implements OnInit {
   public allGroups: any = [];
   public allGroupFormGroup: FormGroup;
   public createAssetFormGroup: FormGroup;
+  public productToEdit = null;
   public load = {
-    requesting: false,
-  }
-
+    requesting: false
+  };
 
   static allGroupForm = () => {
     return {
       code: new FormControl(""),
       detail: new FormControl("")
-
     };
   };
 
   static createAssetForm = () => {
     return {
       asset_code: new FormControl(""),
-  asset_desc: new FormControl(""),
-  refnum:new FormControl(""),
-  asset_type: new FormControl(""),
-  date_acquired: new FormControl(""),
-  original_cost: new FormControl(""),
-  total_maint_amt: new FormControl(""),
-  last_service_date: new FormControl(""),
-  next_service_date: new FormControl(""),
-  last_bill_amount: new FormControl(""),
-  equip_status: new FormControl(""),
-  date_sold: new FormControl("")
+      asset_group_id: new FormControl("", Validators.required),
+      asset_desc: new FormControl(""),
+      refnum: new FormControl(""),
+      asset_type: new FormControl(""),
+      date_acquired: new FormControl(""),
+      original_cost: new FormControl(""),
+      // total_maint_amt: new FormControl(""),
+      // last_service_date: new FormControl(""),
+      next_service_date: new FormControl(""),
+      // last_bill_amount: new FormControl(""),
+      equip_status: new FormControl(""),
+      // date_sold: new FormControl("")
     };
-  };
 
+  };
 
   constructor(
     private allassetsService: AllassetsService,
     private allgroupsService: AllgroupsService,
-    private http: HttpClient, private fb: FormBuilder  )
-    {
-      // this.allGroupFormGroup = this.fb.group(AssettableComponent.allGroupForm()),
-      this.createAssetFormGroup = this.fb.group(AssettableComponent.createAssetForm());}
+    private http: HttpClient,
+    private fb: FormBuilder
+  ) {
+    // this.allGroupFormGroup = this.fb.group(AssettableComponent.allGroupForm()),
+    this.createAssetFormGroup = this.fb.group(
+      AssettableComponent.createAssetForm()
+    );
+  }
 
   ngOnInit() {
     this.getAssets();
@@ -92,38 +96,46 @@ export class AssettableComponent implements OnInit {
     );
   }
 
-  public saveNewAsset() {
-    console.log("response for all assets ");
-
+  public async saveNewAsset()  {
+    console.log("response for all assets");
+    // if (this.createAssetFormGroup.invalid){
+    //   console.log(this.createAssetFormGroup.controls)
+    //   Object.keys(this.createAssetFormGroup.controls).forEach(control => {
+    //     const formControl = this.createAssetFormGroup.get(control);
+    //     if(formControl instanceof FormControl) {
+    //       formControl.markAsTouched({onlySelf: true});
+    //     }
+    //   })
+    // }
     this.load.requesting = true;
     const assetToSubmit = this.createAssetFormGroup.value;
+    // assetToSubmit.asset_group = this.createAssetFormGroup.value.asset_group
     this.allassetsService.postNewasset(assetToSubmit).subscribe(
-      (res) => {
+      res => {
         this.load.requesting = false;
+        // this.assetToSubmit.asset_group = res.value.asset_group;
+
         this.allAssets2.push(res);
         console.log("response for all assets ", this.allAssets2);
         this.createAssetFormGroup.reset();
-
       },
-      (error) => {
+      error => {
         this.load.requesting = false;
-
       },
-      () => {
-
-      });
+      () => {}
+    );
   }
 
+  addId(data) {
+    this.createAssetFormGroup.patchValue(data);
+    this.productToEdit = data;
 
-  public seeCategoryAssets(){
-    this.allgroupsService.getAllGroups().subscribe(
-      (response:any)=>{
+    console.log("ththt", data._id);
+  }
 
-      },
-      (error)=>{
-
-      }
-    )
-
+  public seeCategoryAssets() {
+    this.allgroupsService
+      .getAllGroups()
+      .subscribe((response: any) => {}, error => {});
   }
 }

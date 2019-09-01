@@ -1,3 +1,4 @@
+<p>fault works!</p>
 <!-- <div id="page-top">
   <div id="wrapper">
 
@@ -119,115 +120,108 @@
           </div>
         </div>
       </div>
- <!-- Begin Page Content -->
- <div class="container-fluid">
-
-  <!-- Page Heading -->
-  <!-- <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-   <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more
-     information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official
-       DataTables documentation</a>.</p> -->
-
-  <!-- DataTales Example -->
-  <div class="card shadow mb-4">
-    <div class="card-header py-3">
-      <span>
-        <h6 class="m-0 font-weight-bold text-primary">ALLOCATIONS TABLE <button type="button"
-            class="btn btn-primary" style="float:right;" data-toggle="modal" data-target="#exampleModalCenter22">
-            Create new Asset
-          </button></h6>
-      </span> <!-- Button trigger modal -->
-
-    </div>
-    <!-- '','','','','asset_type','','','total_maint_amt','last_service_date','next_service_date','last_bill_amount','','date_sold' -->
-
-    <div class="card-body">
-      <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-          <thead>
-            <tr>
-              <th>
-                <label class="au-checkbox">
-                  <input type="checkbox">
-                  <span class="au-checkmark"></span>
-                </label>
-              </th>
-              <th>Asset Code</th>
-              <th>User Id</th>
-              <th>date_assigned</th>
-              <th>date_transfer</th>
-              <th>asset_status</th>
-              <th class="" scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let product of allAllocations; let i = index">
-              <td>{{i+1}}</td>
-              <td>{{product?.asset_code}}</td>
-
-              <td>{{product?.user_id}}</td>
-              <td>{{product?.date_assigned}}</td>
-              <td>{{product?.date_transfer}}</td>
-              <td>{{product?.asset_status}}</td>
-              <td>
-                <div class="table-data-feature">
-                  <a routerLink="../admindetails/{{product?._id}}" routerLinkActive="active"
-                    (click)="fullSingleAllocation()">
-                    <button class="btn btn-sm btn-info mr-3"><i class="fa fa-eye"> </i></button></a>
-
-                  <!-- <a routerLink="../admineditproducts/{{product?._id}}" routerLinkActive="active"> -->
-                  <button class="btn btn-sm btn-success mr-3" data-toggle="modal" data-target="#exampleModalCenter22" title="Edit Allocation" (click)="addId(product)">
-                    <i class="fa fa-pencil"></i></button>
 
 
-                  <button class="btn btn-sm btn-danger mr-3" (click)="deleteAProduct(product, product._id, i)"><i
-                      class="fa fa-times"></i></button>
 
-                  <!-- </a>                       -->
-                  <span data-toggle="tooltip" data-placement="top" title="Tooltip on top">
-                    <label class="switch switch-3d switch-primary mr-3">
-                      <input type="checkbox" class="switch-input" [checked]="product.status"
-                        (click)="toggleAdminProduct(product)">
-                      <span class="switch-label"></span>
-                      <span class="switch-handle"></span>
-                    </label>
-                  </span>
 
-                </div>
-              </td>
-              <!-- <td>{{product?.refnum}}</td>
-               <td>{{product?.date_acquired}}</td>
-               <td>{{product?.original_cost}}</td>
-               <td>{{product?.equip_status}}</td> -->
-            </tr>
-          </tbody>
-        </table>
+      <div class="container-fluid">
+        <div class="card shadow mb-4">
+           <div class="card-header py-3">
+             <h6 class="m-0 font-weight-bold text-primary">CREATE ASSET GROUPS</h6>
+           </div>
+
+           <div class="card-body">
+               <form class="form-inline" [formGroup]="allFaultFormGroup">
+                   <div class="form-group mx-sm-3 mb-2">
+                     <label for="inputPassword2" class="sr-only">Password</label>
+                     <input type="text" class="form-control" formControlName="code" id="inputPassword2" placeholder="Enter Fault Code">
+                   </div>
+                   <div class="form-group mx-sm-3 mb-2">
+                       <label for="inputPassword2" class="sr-only">ID</label>
+                       <input type="text" class="form-control" formControlName="detail" id="inputPassword2" placeholder="Enter Fault Detils">
+                     </div>
+                   <button (click)="postFaultCategory()" class="btn btn-primary mb-2">Create New Fault</button>
+                 </form>
+           </div>
+           <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+         </div>
+
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">FAULTS</h6>
+          </div>
+
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>
+                      <label class="au-checkbox">
+                        <input type="checkbox">
+                        <span class="au-checkmark"></span>
+                      </label>
+                    </th>
+                    <th>FAULT Code</th>
+                    <th>Group Name</th>
+                    <th class="" scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let fault of allFaults; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{fault?.code}}</td>
+                    <td>{{fault?.detail}}</td>
+                    <td>
+                      <div class="table-data-feature">
+                        <a routerLink="../admindetails/{{product?._id}}" routerLinkActive="active"
+                          (click)="setLocalForAdmin()">
+                          <button class="btn btn-sm btn-info mr-3" data-toggle="tooltip" data-placement="top"
+                            title="All Assets"><i class="fa fa-eye"> </i></button></a>
+
+                        <!-- <a routerLink="../admineditproducts/{{product?._id}}" routerLinkActive="active"> -->
+                        <button class="btn btn-sm btn-success mr-3" data-toggle="tooltip" data-placement="top"
+                          title="Add An Asset To This Category" (click)="addId(product)">
+                          <i class="fa fa-user-plus"></i></button>
+
+
+                        <button class="btn btn-sm btn-danger mr-3" (click)="deleteAProduct(product, product._id, i)"><i
+                            class="fa fa-times"></i></button>
+
+                        <!-- </a>                       -->
+                        <span data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+                          <label class="switch switch-3d switch-primary mr-3">
+                            <input type="checkbox" class="switch-input" [checked]=""
+                              (click)="toggleAdminProduct(product)">
+                            <span class="switch-label"></span>
+                            <span class="switch-handle"></span>
+                          </label>
+                        </span>
+
+                      </div>
+                    </td>
+
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-
-</div>
-<!-- /.container-fluid -->
+      <!-- /.container-fluid -->
 
 
 
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter22">
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter22">
   Launch demo modalss
 </button>
 
-<!-- Modal -->
 <div class="modal fade" id="exampleModalCenter22" tabindex="-1" role="dialog"
   aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <!-- <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div> -->
+
       <div class="modal-body">
         <form class="" [formGroup]="allocationViewFormGroup">
           <div class="py-4" style="text-align:center">
@@ -237,20 +231,17 @@
             <label for="exampleInputEmail1">trans_no</label>
             <input type="text" class="form-control" formControlName="trans_no" id="validationDefault01"
               aria-describedby="emailHelp" placeholder="">
-            <!-- <small style="color:red" *ngIf='!makeIdFormGroup.valid'>enter full name</small> -->
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">asset_id</label>
             <input type="number" class="form-control" formControlName="asset_id" id="exampleInputEmail1"
               aria-describedby="emailHelp" placeholder="">
-            <!-- <small style="color:red" *ngIf='!makeIdFormGroup.valid'>Numbers only!</small> -->
 
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">user_id</label>
             <input type="text" class="form-control" formControlName="user_id" id="exampleInputEmail1"
               aria-describedby="emailHelp" placeholder="eg AA">
-            <!-- <small style="color:red" *ngIf='!makeIdFormGroup.valid'>enter only two letters</small> -->
 
           </div>
           <div class="form-group">
@@ -259,7 +250,13 @@
               aria-describedby="emailHelp" placeholder="">
 
           </div>
-         <div class="form-group">
+          <div class="form-group">
+            <label for="exampleInputEmail1">user_id</label>
+            <input type="text" class="form-control" formControlName="user_id" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="eg AA">
+
+          </div>
+          <div class="form-group">
             <label for="exampleInputEmail1">asset_code</label>
             <input type="email" class="form-control" formControlName="asset_code" id="exampleInputEmail1"
               aria-describedby="emailHelp" placeholder="">
@@ -269,7 +266,6 @@
             <label for="exampleInputEmail1">date_assigned</label>
             <input type="text" class="form-control" formControlName="date_assigned" id="exampleInputEmail1"
               aria-describedby="emailHelp" placeholder="eg AA">
-            <!-- <small style="color:red" *ngIf='!makeIdFormGroup.valid'>enter only two letters</small> -->
 
           </div>
           <div class="form-group">
@@ -290,16 +286,12 @@
           </div>
           <small *ngIf="!allocationViewFormGroup.valid">Please fill all details above to create your Id</small>
           <br>
-          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
         </form>
       </div>
-      <!-- <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div> -->
+
     </div>
   </div>
-</div>
+</div> -->
 
 
     </div>
@@ -313,6 +305,29 @@
   <!-- End of Content Wrapper -->
 
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -29,8 +29,7 @@
 
   <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item">
-    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapsezero" aria-expanded="true"
-      aria-controls="collapseTwo">
+    <a class="nav-link collapsed" style="cursor:pointer" routerLink='../allassetgroups' routerLinkActive='active'>
       <i class="fas fa-fw fa-cog"></i>
       <span style="cursor:pointer">Categories</span>
     </a>
@@ -47,8 +46,7 @@
 
   <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item">
-    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-      aria-controls="collapseTwo">
+    <a class="nav-link collapsed" style="cursor:pointer" routerLink='../allassets' routerLinkActive='active'>
       <i class="fas fa-fw fa-cog"></i>
       <span style="cursor:pointer">All Assets</span>
     </a>
@@ -65,17 +63,16 @@
 
 
   <li class="nav-item">
-    <a class="nav-link collapsed" (click)='showAllocationTable()' data-toggle="collapse"
-      data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+    <a class="nav-link collapsed" style="cursor:pointer" routerLink='../allallocations' routerLinkActive='active'>
       <i class="fas fa-fw fa-cog"></i>
       <span style="cursor:pointer" >Allocations</span>
     </a>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Custom Components:</h6>
-        <a class="collapse-item" style="cursor:pointer" >All Allocations</a>
-        <a class="collapse-item" style="cursor:pointer" routerLink='allassetgroups' routerLinkActive='active' (click)='showAllocationTable()'>Create Allocation</a>
-        <a class="collapse-item" style="cursor:pointer" routerLink='allassetgroups' routerLinkActive='active' (click)='showAllocationTable()'>View Single Asset</a>
+        <a class="collapse-item" style="cursor:pointer" routerLink='../allallocations' routerLinkActive='active'>All Allocations</a>
+        <a class="collapse-item" style="cursor:pointer" routerLink='allallocations' routerLinkActive='active' (click)='showAllocationTable()'>Create Allocation</a>
+        <a class="collapse-item" style="cursor:pointer" routerLink='allallocations' routerLinkActive='active' (click)='showAllocationTable()'>View Single Asset</a>
 
       </div>
     </div>
@@ -87,6 +84,23 @@
       </div>
     </div> -->
   </li>
+
+  <li class="nav-item">
+      <a class="nav-link collapsed" style="cursor:pointer" routerLink='../users' routerLinkActive='active'>
+        <i class="fas fa-fw fa-cog"></i>
+        <span style="cursor:pointer" >Users</span>
+      </a>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Custom Components:</h6>
+          <a class="collapse-item" style="cursor:pointer" routerLink='../users' routerLinkActive='active'>All Allocations</a>
+          <a class="collapse-item" style="cursor:pointer" routerLink='users' routerLinkActive='active' (click)='showAllocationTable()'>Create Allocation</a>
+          <a class="collapse-item" style="cursor:pointer" routerLink='users' routerLinkActive='active' (click)='showAllocationTable()'>View Single Asset</a>
+
+        </div>
+      </div>
+
+    </li>
 
 
   <!-- <li class="nav-item">

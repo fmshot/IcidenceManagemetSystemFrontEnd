@@ -9,7 +9,7 @@ import { Allocations } from '../models/Allocation';
 export class AllocationService {
   selectedAllocation: Allocations;
   allocations: Allocations[];
-  readonly baseURL = 'http://localhost:8000/api/assetsallocation';
+  readonly baseURL = 'http://localhost/icm/public/api/assetsallocation';
 
   constructor(private http: HttpClient) { }
 
@@ -17,5 +17,11 @@ export class AllocationService {
 
   getAllAllocations() {
     return this.http.get(this.baseURL);
+  }
+
+  postAllAllocations(allo:Allocations) {
+    // console.log('ee', allo);
+    return this.http.post(this.baseURL, allo );
+    // console.log('eeww');
   }
 }

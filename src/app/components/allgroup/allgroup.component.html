@@ -1,84 +1,382 @@
-       <div class="container-fluid">
-         <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">CREATE ASSET GROUPS</h6>
-            </div>
+<!-- <div id="page-top">
+  <div id="wrapper">
 
-            <div class="card-body">
-                <form class="form-inline" [formGroup]="allGroupFormGroup">
-                    <div class="form-group mx-sm-3 mb-2">
-                      <label for="inputPassword2" class="sr-only">Password</label>
-                      <input type="text" class="form-control" formControlName="code" id="inputPassword2" placeholder="Enter Category Name">
-                    </div>
-                    <div class="form-group mx-sm-3 mb-2">
-                        <label for="inputPassword2" class="sr-only">ID</label>
-                        <input type="text" class="form-control" formControlName="detail" id="inputPassword2" placeholder="Enter Category ID">
-                      </div>
-                    <button (click)="postAssetCategory()" class="btn btn-primary mb-2">Create New Category</button>
-                  </form>
+    <div id="content-wrapper" class="d-flex flex-column">
+      <app-sidebar></app-sidebar>
+    </div>
+  </div>
+</div>
+<app-home></app-home> -->
+<!-- <app-sidebar></app-sidebar> -->
+
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+  <!-- Sidebar -->
+  <app-sidebar></app-sidebar>
+  <!-- End of Sidebar -->
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+
+    <!-- Main Content -->
+    <div id="content">
+
+      <!-- Topbar -->
+      <app-topnavbar></app-topnavbar>
+      <!-- End of Topbar -->
+
+
+      <!-- Page Heading -->
+      <div class="container-fluid">
+
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+          <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+          <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+              class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+        </div>
+
+        <!-- Content Row -->
+        <div class="row">
+
+          <!-- Earnings (Monthly) Card Example -->
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">All Assets</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">40,000</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-         <div class="card shadow mb-4">
+          <!-- Earnings (Monthly) Card Example -->
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">All Faults</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">215</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Earnings (Monthly) Card Example -->
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">All Categories</div>
+                    <div class="row no-gutters align-items-center">
+                      <div class="col-auto">
+                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50</div>
+                      </div>
+                      <div class="col">
+                        <div class="progress progress-sm mr-2">
+                          <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pending Requests Card Example -->
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">All Users</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-comments fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="container-fluid">
+        <div class="card shadow mb-4">
            <div class="card-header py-3">
-             <h6 class="m-0 font-weight-bold text-primary">ASSET GROUPS</h6>
+             <h6 class="m-0 font-weight-bold text-primary">CREATE ASSET GROUPS</h6>
            </div>
 
            <div class="card-body">
-             <div class="table-responsive">
-               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                 <thead>
-                   <tr>
-                     <th>
-                       <label class="au-checkbox">
-                         <input type="checkbox">
-                         <span class="au-checkmark"></span>
-                       </label>
-                     </th>
-                     <th>Group Code</th>
-                     <th>Group Name</th>
-                     <th class="" scope="col">Action</th>
-                   </tr>
-                 </thead>
-                 <tbody>
-                   <tr *ngFor="let product of allGroups; let i = index">
-                     <td>{{i+1}}</td>
-                     <td>{{product?.code}}</td>
-                     <td>{{product?.detail}}</td>
-                     <td>
-                       <div class="table-data-feature">
-                         <a routerLink="../admindetails/{{product?._id}}" routerLinkActive="active"
-                           (click)="setLocalForAdmin()">
-                           <button class="btn btn-sm btn-info mr-3" data-toggle="tooltip" data-placement="top"
-                             title="All Assets"><i class="fa fa-eye"> </i></button></a>
-
-                         <!-- <a routerLink="../admineditproducts/{{product?._id}}" routerLinkActive="active"> -->
-                         <button class="btn btn-sm btn-success mr-3" data-toggle="tooltip" data-placement="top"
-                           title="Add An Asset To This Category" (click)="addId(product)">
-                           <i class="fa fa-user-plus"></i></button>
-
-
-                         <button class="btn btn-sm btn-danger mr-3" (click)="deleteAProduct(product, product._id, i)"><i
-                             class="fa fa-times"></i></button>
-
-                         <!-- </a>                       -->
-                         <span data-toggle="tooltip" data-placement="top" title="Tooltip on top">
-                           <label class="switch switch-3d switch-primary mr-3">
-                             <input type="checkbox" class="switch-input" [checked]="product.status"
-                               (click)="toggleAdminProduct(product)">
-                             <span class="switch-label"></span>
-                             <span class="switch-handle"></span>
-                           </label>
-                         </span>
-
-                       </div>
-                     </td>
-
-                   </tr>
-                 </tbody>
-               </table>
-             </div>
+               <form class="form-inline" [formGroup]="allGroupFormGroup">
+                   <div class="form-group mx-sm-3 mb-2">
+                     <label for="inputPassword2" class="sr-only">Password</label>
+                     <input type="text" class="form-control" formControlName="code" id="inputPassword2" placeholder="Enter Category Name">
+                   </div>
+                   <div class="form-group mx-sm-3 mb-2">
+                       <label for="inputPassword2" class="sr-only">ID</label>
+                       <input type="text" class="form-control" formControlName="detail" id="inputPassword2" placeholder="Enter Category ID">
+                     </div>
+                   <button (click)="postAssetCategory()" class="btn btn-primary mb-2">Create New Category</button>
+                 </form>
            </div>
          </div>
-       </div>
-       <!-- /.container-fluid -->
+
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">ASSET GROUPS</h6>
+          </div>
+
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>
+                      <label class="au-checkbox">
+                        <input type="checkbox">
+                        <span class="au-checkmark"></span>
+                      </label>
+                    </th>
+                    <th>Group Code</th>
+                    <th>Group Name</th>
+                    <th class="" scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let product of allGroups; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{product?.code}}</td>
+                    <td>{{product?.detail}}</td>
+                    <td>
+                      <div class="table-data-feature">
+                        <a routerLink="../admindetails/{{product?._id}}" routerLinkActive="active"
+                          (click)="setLocalForAdmin()">
+                          <button class="btn btn-sm btn-info mr-3" data-toggle="tooltip" data-placement="top"
+                            title="All Assets"><i class="fa fa-eye"> </i></button></a>
+
+                        <!-- <a routerLink="../admineditproducts/{{product?._id}}" routerLinkActive="active"> -->
+                        <button class="btn btn-sm btn-success mr-3" data-toggle="tooltip" data-placement="top"
+                          title="Add An Asset To This Category" (click)="addId(product)">
+                          <i class="fa fa-user-plus"></i></button>
+
+
+                        <button class="btn btn-sm btn-danger mr-3" (click)="deleteAProduct(product, product._id, i)"><i
+                            class="fa fa-times"></i></button>
+
+                        <!-- </a>                       -->
+                        <span data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+                          <label class="switch switch-3d switch-primary mr-3">
+                            <input type="checkbox" class="switch-input" [checked]="product.status"
+                              (click)="toggleAdminProduct(product)">
+                            <span class="switch-label"></span>
+                            <span class="switch-handle"></span>
+                          </label>
+                        </span>
+
+                      </div>
+                    </td>
+
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.container-fluid -->
+
+
+
+
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter22">
+  Launch demo modalss
+</button>
+
+<div class="modal fade" id="exampleModalCenter22" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <form class="" [formGroup]="allocationViewFormGroup">
+          <div class="py-4" style="text-align:center">
+            <h5>PLEASE FILL IN CARD DETAILS</h5>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">trans_no</label>
+            <input type="text" class="form-control" formControlName="trans_no" id="validationDefault01"
+              aria-describedby="emailHelp" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">asset_id</label>
+            <input type="number" class="form-control" formControlName="asset_id" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="">
+
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">user_id</label>
+            <input type="text" class="form-control" formControlName="user_id" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="eg AA">
+
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">asset_code</label>
+            <input type="email" class="form-control" formControlName="asset_code" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="">
+
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">user_id</label>
+            <input type="text" class="form-control" formControlName="user_id" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="eg AA">
+
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">asset_code</label>
+            <input type="email" class="form-control" formControlName="asset_code" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="">
+
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">date_assigned</label>
+            <input type="text" class="form-control" formControlName="date_assigned" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="eg AA">
+
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">asset_status</label>
+            <input type="email" class="form-control" formControlName="asset_status" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="">
+
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">date_transfer</label>
+            <input type="email" class="form-control" formControlName="date_transfer" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="">
+
+          </div>
+          <div class="pr-1">
+            <button type="button" (click)="saveNewAllocation()" [disabled]="!allocationViewFormGroup.valid"
+              class="btn btn-primary">Submit</button>
+          </div>
+          <small *ngIf="!allocationViewFormGroup.valid">Please fill all details above to create your Id</small>
+          <br>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div> -->
+
+
+    </div>
+    <!-- End of Main Content -->
+
+    <!-- Footer -->
+    <app-footer></app-footer>
+    <!-- End of Footer -->
+
+  </div>
+  <!-- End of Content Wrapper -->
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

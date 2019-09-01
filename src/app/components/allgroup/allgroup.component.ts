@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import {
   FormGroup,
@@ -8,45 +8,45 @@ import {
   Validators
 } from "@angular/forms";
 
-
 import { AllocationService } from "../../services/allocation.service";
 
 import { AllgroupsService } from "../../services/allgroups.service";
 declare const $: any;
 @Component({
-  selector: 'app-allgroup',
-  templateUrl: './allgroup.component.html',
-  styleUrls: ['./allgroup.component.css']
+  selector: "app-allgroup",
+  templateUrl: "./allgroup.component.html",
+  styleUrls: ["./allgroup.component.css"]
 })
 export class AllgroupComponent implements OnInit {
   public load = {
     requesting: false
   };
   allGroups: any = [];
-  public allCategories: any=[];
-  private allAllocations:any=[];
+  public allCategories: any = [];
+  private allAllocations: any = [];
   public allGroupFormGroup: FormGroup;
+  public productToEdit = null;
 
   static allGroupForm = () => {
     return {
       code: new FormControl(""),
       detail: new FormControl("")
-
     };
   };
-  constructor(private allocationService:AllocationService, private fb: FormBuilder,
+  constructor(
+    private allocationService: AllocationService,
+    private fb: FormBuilder,
     private allgroupsService: AllgroupsService,
     private http: HttpClient
   ) {
     this.allGroupFormGroup = this.fb.group(AllgroupComponent.allGroupForm());
-
   }
 
   ngOnInit() {
     this.getAssets();
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
+    $(function() {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
   }
 
   //for complete table on init
@@ -63,18 +63,18 @@ export class AllgroupComponent implements OnInit {
   }
   //for complete table on init
 
-  public seeCategoryAssets(){
-    this.allgroupsService.getAllGroups().subscribe(
-      (response:any)=>{
-
-      },
-      (error)=>{
-
-      }
-    )
-
+  public seeCategoryAssets() {
+    this.allgroupsService
+      .getAllGroups()
+      .subscribe((response: any) => {}, error => {});
   }
 
+  addId(data) {
+    this.allGroupFormGroup.patchValue(data);
+    this.productToEdit = data;
+
+    console.log("ththt", data._id);
+  }
 
   public postAssetCategory() {
     this.load.requesting = true;
@@ -89,7 +89,6 @@ export class AllgroupComponent implements OnInit {
       error => {
         console.log("Error ", error);
         this.load.requesting = false;
-
       }
     );
   }
@@ -109,7 +108,6 @@ export class AllgroupComponent implements OnInit {
   // }
 
   public showAnAsset() {
-    $('#mediumModal').modal('show');
+    $("#mediumModal").modal("show");
   }
-
 }
